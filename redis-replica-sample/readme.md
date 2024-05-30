@@ -2,7 +2,7 @@
 
 ## description
 
-this docker componse file creates two containers from redis nodes. one of them is master and the other is slave.
+this docker compose file creates two containers from redis nodes. one of them is master and the other is slave.
 
 ## run the docker comopse
 
