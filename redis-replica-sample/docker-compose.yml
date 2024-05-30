@@ -1,1 +1,21 @@
+version: '3'
+services:
+  redis-master:
+    image: redis:latest
+    container_name: redis-master
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass sample@Strong23Password
+    networks:
+      - redis-net
 
+  redis-slave:
+    image: redis:latest
+    container_name: redis-slave
+    command: redis-server --slaveof redis-master 6379 --masterauth sample@Strong23Password
+    networks:
+      - redis-net
+
+networks:
+  redis-net:
+    driver: bridge
