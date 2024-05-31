@@ -8,6 +8,9 @@ services:
     command: redis-server --requirepass sample@Strong23Password
     networks:
       - redis-net
+    # Volumes store your data between container upgrades
+    volumes:
+      - './redis-master:/data'
 
   redis-slave:
     image: redis:latest
@@ -15,8 +18,13 @@ services:
     ports:
       - "6380:6379"
     command: redis-server --slaveof redis-master 6379 --masterauth sample@Strong23Password
+    # Volumes store your data between container upgrades
+    volumes:
+      - './redis-slave:/data'
     networks:
       - redis-net
+    depends_on:
+      - redis-master
 
 networks:
   redis-net:
