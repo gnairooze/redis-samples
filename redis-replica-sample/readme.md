@@ -6,14 +6,6 @@ this docker compose file creates two containers from redis nodes. one of them is
 
 ## run the containers
 
-first create the network
-
-```shell
-docker network create --gateway 10.20.0.1 --subnet 10.20.0.0/24 redis-net
-```
-
-then run docker-compose
-
 ```shell
 docker-compose up
 ```
